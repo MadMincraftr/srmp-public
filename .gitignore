@@ -285,6 +285,8 @@ _Pvt_Extensions
 .paket/paket.exe
 paket-files/
 
+*.dll
+
 # FAKE - F# Make
 .fake/
 
