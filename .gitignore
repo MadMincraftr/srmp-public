@@ -285,7 +285,6 @@ _Pvt_Extensions
 .paket/paket.exe
 paket-files/
 
-*.dll
 
 # FAKE - F# Make
 .fake/
@@ -332,3 +331,40 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 /SRMP/_info.txt
+Libs/Assembly-CSharp-firstpass.dll
+Libs/Assembly-CSharp_publicized.dll
+Libs/DOTween.dll
+Libs/0Harmony.dll
+Libs/InControl.dll
+Libs/InControl.Examples.dll
+Libs/Logger.dll
+Libs/Mono.Data.Sqlite.dll
+Libs/Mono.Security.dll
+Libs/System.ComponentModel.DataAnnotations.dll
+Libs/System.Data.dll
+Libs/System.Core.dll
+Libs/System.Numerics.dll
+Libs/System.dll
+Libs/System.Runtime.Serialization.Formatters.Soap.dll
+Libs/System.Security.dll
+Libs/System.Transactions.dll
+Libs/System.Web.ApplicationServices.dll
+Libs/System.Web.dll
+Libs/System.Web.Services.dll
+Libs/Unity.TextMeshPro.dll
+Libs/UnityCoreMod.dll
+Libs/System.Xml.dll
+Libs/UnityEngine.AnimationModule.dll
+Libs/UnityEngine.AssetBundleModule.dll
+Libs/UnityEngine.CoreModule.dll
+Libs/UnityEngine.dll
+Libs/UnityEngine.IMGUIModule.dll
+Libs/UnityEngine.InputLegacyModule.dll
+Libs/UnityEngine.InputModule.dll
+Libs/UnityEngine.JSONSerializeModule.dll
+Libs/UnityEngine.PhysicsModule.dll
+Libs/UnityEngine.TextCoreModule.dll
+Libs/UnityEngine.UI.dll
+Libs/UnityEngine.UIModule.dll
+Libs/UnityEngine.VideoModule.dll
+Libs/UnityEngine.WindModule.dll
