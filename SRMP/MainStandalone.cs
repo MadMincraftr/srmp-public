@@ -1,5 +1,5 @@
 ﻿#if Standalone
-/*
+
 using HarmonyLib;
 using Newtonsoft.Json;
 using SRMultiplayer.Networking;
@@ -78,5 +78,4 @@ namespace SRMultiplayer
 
         public void Unload() { }
     }
-}*/
 #endif
