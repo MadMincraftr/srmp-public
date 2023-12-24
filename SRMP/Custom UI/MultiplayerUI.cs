@@ -325,7 +325,7 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
                     }
                     else
                     {
-                        if (steamUITest)
+                        if (!SRMultiplayer.Steam.Main.FinishedSetup)
                             HostGUI();
                         else
                             SteamHostGUI();

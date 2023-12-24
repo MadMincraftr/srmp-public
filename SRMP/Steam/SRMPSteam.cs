@@ -42,28 +42,6 @@ namespace SRMultiplayer.Steam
             SteamMatchmaking.CreateLobby(type, 255);
         }
 
-        public static async Task<string> GetPublicIP()
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                try
-                {
-                    HttpResponseMessage response = await client.GetAsync("https://ipinfo.io");
-                    response.EnsureSuccessStatusCode();
-
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    int index = responseBody.IndexOf("ip\":", StringComparison.OrdinalIgnoreCase);
-                    string publicIp = responseBody.Substring(index + 5, responseBody.IndexOf("\"", index + 5, StringComparison.OrdinalIgnoreCase) - (index + 5));
-
-                    return publicIp.Trim();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error getting public IP: " + ex.Message);
-                    return null;
-                }
-            }
-        }
         public static string GetIP()
         {
             string localIP = string.Empty;
@@ -88,6 +66,7 @@ namespace SRMultiplayer.Steam
         {
             if (callback.m_eResult == EResult.k_EResultOK)
             {
+                currLobbyID = new CSteamID(callback.m_ulSteamIDLobby);
                 SteamMatchmaking.SetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "hostIP", GetIP());
                 SteamMatchmaking.SetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "hostPort", NetworkServer.Instance.Port.ToString());
 
@@ -106,6 +85,7 @@ namespace SRMultiplayer.Steam
         }
         internal void JoinLobby(LobbyEnter_t callback)
         {
+            currLobbyID = new CSteamID(callback.m_ulSteamIDLobby);
             string name;
             if (string.IsNullOrEmpty(Globals.Username))
                 name = "NoName_Guest";
@@ -114,5 +94,6 @@ namespace SRMultiplayer.Steam
             NetworkClient.Instance.Connect(SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "hostIP"), int.Parse(SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "hostPort")), name);
         }
 
+        public CSteamID currLobbyID;
     }
 }

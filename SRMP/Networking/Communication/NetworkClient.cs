@@ -1,5 +1,7 @@
 ﻿using Lidgren.Network;
 using SRMultiplayer.Packets;
+using SRMultiplayer.Steam;
+using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -229,6 +231,7 @@ namespace SRMultiplayer.Networking
         public void Disconnect(string message = "goodbye")
         {
             Status = ConnectionStatus.Disconnected;
+            if (Main.FinishedSetup) SteamMatchmaking.LeaveLobby(SRMPSteam.Instance.currLobbyID);
             m_Client?.Disconnect(message);
         }
 

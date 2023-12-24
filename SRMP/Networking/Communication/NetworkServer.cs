@@ -1,6 +1,7 @@
 ﻿using Lidgren.Network;
 using SRMultiplayer.Packets;
 using SRMultiplayer.Steam;
+using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -111,7 +112,7 @@ namespace SRMultiplayer.Networking
                 SRSingleton<SceneContext>.Instance.TutorialDirector.tutModel.completedIds.Add(tut);
             }
 
-            if (steamMode != MultiplayerUI.SteamHostMode.NoSteam && Steam.Main.FinishedSetup)
+            if (Steam.Main.FinishedSetup)
             {
                 SRMPSteam.Instance.HostSteamGame(MultiplayerUI.Instance.SteamHostModeToLobbyType[steamMode]);
             }
@@ -121,8 +122,11 @@ namespace SRMultiplayer.Networking
         public void Disconnect()
         {
             Status = ServerStatus.Stopped;
+
             m_Server?.Shutdown("goodbye");
             m_DiscoverServer?.Shutdown("goodbye");
+
+            if (Main.FinishedSetup) SteamMatchmaking.LeaveLobby(SRMPSteam.Instance.currLobbyID);
 
             SRSingleton<NetworkMasterServer>.Instance.DeleteServer();
         }
