@@ -325,10 +325,10 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
                     }
                     else
                     {
-                        if (!SRMultiplayer.Steam.Main.FinishedSetup)
-                            HostGUI();
-                        else
+                        if (SRMultiplayer.Steam.Main.FinishedSetup)
                             SteamHostGUI();
+                        else
+                            HostGUI();
                     }
                 }
             }

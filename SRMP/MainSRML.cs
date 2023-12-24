@@ -1,4 +1,4 @@
-﻿
+﻿#if SRML
 using Newtonsoft.Json;
 using SRML;
 using SRML.SR;
@@ -103,3 +103,4 @@ namespace SRMultiplayer
         }
     }
 }
+#endif

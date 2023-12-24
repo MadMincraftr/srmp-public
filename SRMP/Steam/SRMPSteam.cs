@@ -14,6 +14,7 @@ namespace SRMultiplayer.Steam
 {
     public class SRMPSteam : SRSingleton<SRMPSteam>
     {
+        public bool isHost { get; internal set; }
         internal Callback<LobbyCreated_t> successfulHost;
         internal Callback<LobbyInvite_t> invited;
         internal Callback<GameLobbyJoinRequested_t> attemptJoin;
@@ -40,6 +41,7 @@ namespace SRMultiplayer.Steam
         public void HostSteamGame(ELobbyType type)
         {
             SteamMatchmaking.CreateLobby(type, 255);
+            isHost = true;
         }
 
         public static string GetIP()
@@ -85,6 +87,10 @@ namespace SRMultiplayer.Steam
         }
         internal void JoinLobby(LobbyEnter_t callback)
         {
+            if (isHost)
+                return;
+
+
             currLobbyID = new CSteamID(callback.m_ulSteamIDLobby);
             string name;
             if (string.IsNullOrEmpty(Globals.Username))

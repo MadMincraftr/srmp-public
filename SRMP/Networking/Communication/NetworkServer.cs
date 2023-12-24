@@ -126,7 +126,11 @@ namespace SRMultiplayer.Networking
             m_Server?.Shutdown("goodbye");
             m_DiscoverServer?.Shutdown("goodbye");
 
-            if (Main.FinishedSetup) SteamMatchmaking.LeaveLobby(SRMPSteam.Instance.currLobbyID);
+            if (Main.FinishedSetup)
+            {
+                SteamMatchmaking.LeaveLobby(SRMPSteam.Instance.currLobbyID);
+                SRMPSteam.Instance.isHost = false;
+            }
 
             SRSingleton<NetworkMasterServer>.Instance.DeleteServer();
         }

@@ -231,7 +231,11 @@ namespace SRMultiplayer.Networking
         public void Disconnect(string message = "goodbye")
         {
             Status = ConnectionStatus.Disconnected;
-            if (Main.FinishedSetup) SteamMatchmaking.LeaveLobby(SRMPSteam.Instance.currLobbyID);
+            if (Main.FinishedSetup)
+            {
+                SteamMatchmaking.LeaveLobby(SRMPSteam.Instance.currLobbyID);
+                SRMPSteam.Instance.isHost = false;
+            }
             m_Client?.Disconnect(message);
         }
 
