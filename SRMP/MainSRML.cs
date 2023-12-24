@@ -39,6 +39,7 @@ namespace SRMultiplayer
 
             SRMP.Log("Loading SRMP SRML Version");
 
+
             //create the mod directory in the install folder if needed
             if (!Directory.Exists(SRMP.ModDataPath))
             {
@@ -77,6 +78,7 @@ namespace SRMultiplayer
             m_GameObject.AddComponent<MultiplayerUI>();
             m_GameObject.AddComponent<ChatUI>();
             m_GameObject.AddComponent<SRMPConsole>();
+            Steam.Main.Init(m_GameObject);
 
             //mark all mod objects and do not destroy
             GameObject.DontDestroyOnLoad(m_GameObject);

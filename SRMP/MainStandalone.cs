@@ -20,6 +20,7 @@ namespace SRMultiplayer
         {
             if (m_GameObject != null) return;
 
+
             SRMP.Log("Loading SRMP Standalone Version");
 
             //create the mod directory in the install folder if needed
@@ -61,6 +62,7 @@ namespace SRMultiplayer
             m_GameObject.AddComponent<MultiplayerUI>();
             m_GameObject.AddComponent<ChatUI>();
             m_GameObject.AddComponent<SRMPConsole>();
+            Steam.Main.Init(m_GameObject);
 
             //mark all mod objects and do not destroy
             GameObject.DontDestroyOnLoad(m_GameObject);

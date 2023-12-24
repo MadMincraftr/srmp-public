@@ -31,6 +31,8 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
         }
     }
 
+    // Public due to some classes reading from it.
+    public string Username => username;
 
     private string username;
     private float lastCodeUse;
