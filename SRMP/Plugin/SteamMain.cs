@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace SRMultiplayer.Steam
 {
-    internal static class Main
+    internal static class SteamMain
     {
         public static bool FinishedSetup => m_finishedSetup && m_startedSetup;
 

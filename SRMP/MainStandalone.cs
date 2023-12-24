@@ -42,9 +42,9 @@ namespace SRMultiplayer
             }
             else //if alreayd created load in the data
             {
-                
+
                 Globals.UserData = JsonConvert.DeserializeObject<UserData>(File.ReadAllText(Path.Combine(SRMP.ModDataPath, "userdata.json")));
-                if(Globals.UserData.IgnoredMods == null)
+                if (Globals.UserData.IgnoredMods == null)
                 {
                     Globals.UserData.IgnoredMods = new System.Collections.Generic.List<string>();
                 }
@@ -62,7 +62,7 @@ namespace SRMultiplayer
             m_GameObject.AddComponent<MultiplayerUI>();
             m_GameObject.AddComponent<ChatUI>();
             m_GameObject.AddComponent<SRMPConsole>();
-            Steam.Main.Init(m_GameObject);
+            Steam.SteamMain.Init(m_GameObject);
 
             //mark all mod objects and do not destroy
             GameObject.DontDestroyOnLoad(m_GameObject);
@@ -80,4 +80,5 @@ namespace SRMultiplayer
 
         public void Unload() { }
     }
+}
 #endif

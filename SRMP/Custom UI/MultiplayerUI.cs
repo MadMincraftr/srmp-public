@@ -100,7 +100,7 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
     /// </summary>
     private void Update()
     {
-        if (currentSteamHostMode == SteamHostMode.NoSteam && SRMultiplayer.Steam.Main.FinishedSetup)
+        if (currentSteamHostMode == SteamHostMode.NoSteam && SRMultiplayer.Steam.SteamMain.FinishedSetup)
         {
             currentSteamHostMode = SteamHostMode.Normal;
         }
@@ -325,7 +325,7 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
                     }
                     else
                     {
-                        if (SRMultiplayer.Steam.Main.FinishedSetup)
+                        if (SRMultiplayer.Steam.SteamMain.FinishedSetup)
                             SteamHostGUI();
                         else
                             HostGUI();

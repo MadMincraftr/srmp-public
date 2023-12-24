@@ -21,7 +21,7 @@ namespace SRMultiplayer.Steam
         internal Callback<LobbyEnter_t> join;
         public void Start()
         {
-            if (Main.FinishedSetup)
+            if (SteamMain.FinishedSetup)
             {
                 successfulHost = Callback<LobbyCreated_t>.Create(CheckSteamHostSuccess);
                 invited = Callback<LobbyInvite_t>.Create(DetectInvite);
@@ -32,7 +32,7 @@ namespace SRMultiplayer.Steam
         }
         public void Update()
         {
-            if (Main.FinishedSetup)
+            if (SteamMain.FinishedSetup)
             {
                 SteamAPI.RunCallbacks();
             }

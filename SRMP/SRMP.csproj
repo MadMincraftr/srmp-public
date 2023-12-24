@@ -179,7 +179,9 @@
     <Compile Include="Custom UI\MultiplayerUI.cs" />
     <Compile Include="Custom UI\TestUI.cs" />
     <Compile Include="Globals.cs" />
-    <Compile Include="Steam\Main.cs" />
+    <Compile Include="Patches\Patch_DiscordSupport.cs" />
+    <Compile Include="Plugin\SRMPDiscord.cs" />
+    <Compile Include="Plugin\SteamMain.cs" />
     <Compile Include="Lidgren.Network\Encryption\NetAESEncryption.cs" />
     <Compile Include="Lidgren.Network\Encryption\NetBlockEncryptionBase.cs" />
     <Compile Include="Lidgren.Network\Encryption\NetCryptoProviderBase.cs" />
@@ -497,7 +499,7 @@
     </Compile>
     <Compile Include="SRMP.cs" />
     <Compile Include="Console\SRMPConsole.cs" />
-    <Compile Include="Steam\SRMPSteam.cs" />
+    <Compile Include="Plugin\SRMPSteam.cs" />
     <Compile Include="Utils\Compression.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\Objects.cs" />

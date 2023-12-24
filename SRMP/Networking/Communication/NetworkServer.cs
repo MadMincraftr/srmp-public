@@ -112,7 +112,7 @@ namespace SRMultiplayer.Networking
                 SRSingleton<SceneContext>.Instance.TutorialDirector.tutModel.completedIds.Add(tut);
             }
 
-            if (Steam.Main.FinishedSetup)
+            if (Steam.SteamMain.FinishedSetup)
             {
                 SRMPSteam.Instance.HostSteamGame(MultiplayerUI.Instance.SteamHostModeToLobbyType[steamMode]);
             }
@@ -126,7 +126,7 @@ namespace SRMultiplayer.Networking
             m_Server?.Shutdown("goodbye");
             m_DiscoverServer?.Shutdown("goodbye");
 
-            if (Main.FinishedSetup)
+            if (SteamMain.FinishedSetup)
             {
                 SteamMatchmaking.LeaveLobby(SRMPSteam.Instance.currLobbyID);
                 SRMPSteam.Instance.isHost = false;

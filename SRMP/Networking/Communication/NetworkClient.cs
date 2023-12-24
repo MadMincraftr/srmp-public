@@ -17,6 +17,7 @@ namespace SRMultiplayer.Networking
     {
         private NetClient m_Client;
 
+        public int playerCount;
         public enum ConnectionStatus
         {
             Disconnected,
@@ -151,7 +152,7 @@ namespace SRMultiplayer.Networking
                                 NetIncomingMessage hail = im.SenderConnection.RemoteHailMessage;
                                 Globals.LocalID = hail.ReadByte();
 
-                                int playerCount = hail.ReadInt32();
+                                playerCount = hail.ReadInt32();
                                 for (int i = 0; i < playerCount; i++)
                                 {
                                     byte id = hail.ReadByte();
@@ -231,7 +232,7 @@ namespace SRMultiplayer.Networking
         public void Disconnect(string message = "goodbye")
         {
             Status = ConnectionStatus.Disconnected;
-            if (Main.FinishedSetup)
+            if (SteamMain.FinishedSetup)
             {
                 SteamMatchmaking.LeaveLobby(SRMPSteam.Instance.currLobbyID);
                 SRMPSteam.Instance.isHost = false;
