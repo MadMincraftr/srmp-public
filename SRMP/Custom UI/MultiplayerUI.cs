@@ -472,7 +472,7 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
     /// <summary>
     /// Display the hosting info part of the gui
     /// </summary>
-    private void HostGUI()
+    private void SteamHostGUI()
     {
         GUILayout.Label("Username: " + Globals.Username);
         if (GUILayout.Button("Change Username"))
@@ -511,7 +511,7 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
             // Hosting
             if (GUILayout.Button("Host"))
             {
-                NetworkServer.Instance.StartServer(numport);
+                NetworkServer.Instance.StartServer(numport, currentSteamHostMode);
                 SaveSettings();
             }
 
@@ -521,7 +521,7 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
     /// <summary>
     /// Display the hosting info part of the gui
     /// </summary>
-    private void SteamHostGUI()
+    private void HostGUI()
     {
         GUILayout.Label("Username: " + Globals.Username);
         if (GUILayout.Button("Change Username"))
@@ -543,7 +543,7 @@ public class MultiplayerUI : SRSingleton<MultiplayerUI>
         {
             if (GUILayout.Button("Host"))
             {
-                NetworkServer.Instance.StartServer(numport, currentSteamHostMode);
+                NetworkServer.Instance.StartServer(numport);
                 SaveSettings();
             }
         }
