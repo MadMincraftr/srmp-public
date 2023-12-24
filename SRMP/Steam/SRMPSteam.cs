@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace SRMultiplayer.Steam
 {
-    public class SRMPSteam : MonoBehaviour
+    public class SRMPSteam : SRSingleton<SRMPSteam>
     {
         internal Callback<LobbyCreated_t> successfulHost;
         internal Callback<LobbyInvite_t> invited;
@@ -107,10 +107,10 @@ namespace SRMultiplayer.Steam
         internal void JoinLobby(LobbyEnter_t callback)
         {
             string name;
-            if (string.IsNullOrEmpty(MultiplayerUI.Instance.Username))
+            if (string.IsNullOrEmpty(Globals.Username))
                 name = "NoName_Guest";
             else
-                name = MultiplayerUI.Instance.Username;
+                name = Globals.Username;
             NetworkClient.Instance.Connect(SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "hostIP"), int.Parse(SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), "hostPort")), name);
         }
 
