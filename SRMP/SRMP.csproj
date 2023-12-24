@@ -76,6 +76,10 @@
       <HintPath>.\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp_publicized">
       <HintPath>..\Libs\Assembly-CSharp_publicized.dll</HintPath>
       <Private>False</Private>
@@ -93,6 +97,10 @@
       <HintPath>..\Libs\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="SRML, Version=0.2.1.0, Culture=neutral, processorArchitecture=MSIL" Condition="$(DefineConstants.Contains('SRML'))">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\SRML.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -106,7 +114,7 @@
       <HintPath>.\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityCoreMod, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="UnityCoreMod, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" Condition="$(DefineConstants.Contains('Standalone'))">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\UnityCoreMod.dll</HintPath>
       <Private>False</Private>
@@ -171,6 +179,7 @@
     <Compile Include="Custom UI\MultiplayerUI.cs" />
     <Compile Include="Custom UI\TestUI.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="Steam\Main.cs" />
     <Compile Include="Lidgren.Network\Encryption\NetAESEncryption.cs" />
     <Compile Include="Lidgren.Network\Encryption\NetBlockEncryptionBase.cs" />
     <Compile Include="Lidgren.Network\Encryption\NetCryptoProviderBase.cs" />
@@ -488,6 +497,7 @@
     </Compile>
     <Compile Include="SRMP.cs" />
     <Compile Include="Console\SRMPConsole.cs" />
+    <Compile Include="Steam\SRMPSteam.cs" />
     <Compile Include="Utils\Compression.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\Objects.cs" />
@@ -503,16 +513,14 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'SRML|AnyCPU' ">
-    <Reference Include="SRML">
-      <HintPath>..\Libs\SRML.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="srmultiplayer.dat" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="modinfo.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
